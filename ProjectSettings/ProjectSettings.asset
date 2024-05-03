@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Capstone
   productName: VirtualSphere
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -142,6 +142,8 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 11400000, guid: abd1f3688a7757b4f98c602c5771fc20, type: 2}
+  - {fileID: 3733834351300544655, guid: 536c2a357b37dd94db7b6be2bd699a0b, type: 2}
+  - {fileID: 11400000, guid: 4efd225ef567eb24f83778657b9ff8ec, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
