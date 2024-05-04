@@ -39,7 +39,7 @@ public class LoginManager : MonoBehaviour
             if (response.StatusCode == 200)
             {
                 loadingSlider.value = 100;
-                SceneManager.LoadScene("IdeaSceneVR", LoadSceneMode.Single);
+                SceneManager.LoadScene("DistanceGrabExamples", LoadSceneMode.Single);
                 loadingPanel.SetActive(false);
                
             }
