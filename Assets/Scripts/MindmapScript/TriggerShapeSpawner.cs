@@ -6,10 +6,10 @@ public class TriggerShapeSpawner : MonoBehaviour
 {
     public GameObject shapePrefab;
     public OVRInput.Button triggerButton = OVRInput.Button.PrimaryIndexTrigger;
-    private float holdDuration = 1f;
+    private float holdDuration = 0.3f;
     public float distanceInFront = 0.1f; // Distance in meters
     public GameObject LHand;
-    public float scaleUpTime = 0.2f;
+    public float scaleUpTime = 0.17f;
 
     private float triggerStartTime;
     private bool isTriggerPressed = false;
@@ -31,7 +31,7 @@ public class TriggerShapeSpawner : MonoBehaviour
             // Start coroutine to animate scale
             StartCoroutine(ScaleUp(newShape, scaleUpTime));
         }
-        Debug.Log(holdDuration);
+        //Debug.Log(holdDuration);
         if (OVRInput.GetUp(triggerButton))
         {
             isTriggerPressed = false;

@@ -1855,8 +1855,6 @@ GameObject:
   - component: {fileID: 683652170}
   - component: {fileID: 683652169}
   - component: {fileID: 683652168}
-  - component: {fileID: 683652172}
-  - component: {fileID: 683652171}
   m_Layer: 0
   m_Name: UserRig
   m_TagString: Untagged
@@ -1878,7 +1876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapePrefab: {fileID: 3030781686354497060, guid: c769082267d554bff9901509de664d2d, type: 3}
   triggerButton: 8192
-  holdDuration: 1
   distanceInFront: 0.1
   LHand: {fileID: 1679097377}
   scaleUpTime: 0.5
@@ -1912,42 +1909,6 @@ Transform:
   - {fileID: 1679097376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &683652171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683652167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb177e624f734af6acc2dc69fdacaa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  L_Hand: {fileID: 1679097377}
-  XRRig: {fileID: 1679097369}
-  difference: {x: 0, y: 0, z: 0}
-  oldhandpos: {x: 0, y: 0, z: 0}
-  currenthandpos: {x: 0, y: 0, z: 0}
-  smoothSpeed: 1
---- !u!114 &683652172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683652167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b984f7092c7a4a7bb0b4d70c66af299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  R_Hand: {fileID: 1679097370}
-  XRRig: {fileID: 1679097369}
-  difference: {x: 0, y: 0, z: 0}
-  oldhandpos: {x: 0, y: 0, z: 0}
-  currenthandpos: {x: 0, y: 0, z: 0}
-  smoothSpeed: 1
 --- !u!1 &771331613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,6 +2494,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d952c175ec3c6554199fd744548ce50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1242899530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242899533}
+  - component: {fileID: 1242899532}
+  - component: {fileID: 1242899531}
+  m_Layer: 0
+  m_Name: GrabMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1242899531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242899530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb177e624f734af6acc2dc69fdacaa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  L_Hand: {fileID: 1679097377}
+  XRRig: {fileID: 1679097369}
+  difference: {x: 0, y: 0, z: 0}
+  oldhandpos: {x: 0, y: 0, z: 0}
+  currenthandpos: {x: 0, y: 0, z: 0}
+  smoothSpeed: 1
+--- !u!114 &1242899532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242899530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b984f7092c7a4a7bb0b4d70c66af299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  R_Hand: {fileID: 1679097370}
+  XRRig: {fileID: 1679097369}
+  difference: {x: 0, y: 0, z: 0}
+  oldhandpos: {x: 0, y: 0, z: 0}
+  currenthandpos: {x: 0, y: 0, z: 0}
+  smoothSpeed: 1
+--- !u!4 &1242899533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242899530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.336, z: 0.602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1277670088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3532,7 +3562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f75deb075971747806eaf35e1a2c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0.5}
+  offset: {x: 0, y: 0, z: 0.8}
   smoothAmount: 1
 --- !u!1001 &1833880716
 PrefabInstance:
@@ -4223,3 +4253,4 @@ SceneRoots:
   - {fileID: 683652170}
   - {fileID: 171852856}
   - {fileID: 1755500786}
+  - {fileID: 1242899533}
