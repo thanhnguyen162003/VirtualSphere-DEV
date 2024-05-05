@@ -6,37 +6,43 @@ public class TriggerShapeSpawner : MonoBehaviour
 {
     public GameObject shapePrefab;
     public OVRInput.Button triggerButton = OVRInput.Button.PrimaryIndexTrigger;
-    public float holdDuration = 0.1f;
+    private float holdDuration = 1f;
     public float distanceInFront = 0.1f; // Distance in meters
     public GameObject LHand;
     public float scaleUpTime = 0.2f;
 
     private float triggerStartTime;
     private bool isTriggerPressed = false;
+    private GameObject newShape;
 
     void Update()
     {
+
             if (OVRInput.GetDown(triggerButton))
             {
                 triggerStartTime = Time.time;
                 isTriggerPressed = true;
-            }
+            // Calculate position in front of the controller
 
+            Vector3 spawnPosition = LHand.transform.position + LHand.transform.forward * distanceInFront;
+             newShape = Instantiate(shapePrefab, spawnPosition, LHand.transform.rotation);
+            AudioSource audioSource = newShape.GetComponent<AudioSource>();
+            audioSource.Play();
+            // Start coroutine to animate scale
+            StartCoroutine(ScaleUp(newShape, scaleUpTime));
+        }
+        Debug.Log(holdDuration);
         if (OVRInput.GetUp(triggerButton))
         {
             isTriggerPressed = false;
 
             // Check if held long enough
-            if (Time.time - triggerStartTime >= holdDuration)
+            if (Time.time - triggerStartTime < holdDuration)
             {
-                // Calculate position in front of the controller
-
-                Vector3 spawnPosition = LHand.transform.position + LHand.transform.forward * distanceInFront;
-                GameObject newShape = Instantiate(shapePrefab, spawnPosition, LHand.transform.rotation);
-                AudioSource audioSource = newShape.GetComponent<AudioSource>();
-                audioSource.Play();
-                // Start coroutine to animate scale
-                StartCoroutine(ScaleUp(newShape, scaleUpTime));
+               if(newShape != null)
+                {
+                    newShape.SetActive(false);
+                }
             }
         }
     }
