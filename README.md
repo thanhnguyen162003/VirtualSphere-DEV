@@ -18,6 +18,9 @@
       },
       bodyText: "This is the description of the node",
       shape: "sphere", 
+       metadata: {     
+          ... 
+      } ,
       color: "#FF0000", 
       image: "image_url.jpg", 
       parentId: null, // Top-level nodes have no parent
