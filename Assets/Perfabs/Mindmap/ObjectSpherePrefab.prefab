@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4269830463691567930}
   - component: {fileID: 7350532622804011982}
   - component: {fileID: 8374434030285945150}
-  - component: {fileID: 8532006398985276068}
   m_Layer: 6
   m_Name: Sphere
   m_TagString: Selectable
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8532006398985276068
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331509081708727921}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2815018310478443855
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 2933332628945936112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003081249, y: 0.014686374, z: 0.003961064}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -255,9 +233,8 @@ GameObject:
   - component: {fileID: 3650096166371146741}
   - component: {fileID: 7506922837004953065}
   - component: {fileID: 7567000206048084635}
-  - component: {fileID: 3271761979630193719}
+  - component: {fileID: 2499081267585534155}
   - component: {fileID: 8785664184182128178}
-
   m_Layer: 6
   m_Name: ObjectSpherePrefab
   m_TagString: Untagged
@@ -430,7 +407,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3271761979630193719
+--- !u!114 &2499081267585534155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,10 +416,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3030781686354497060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56491a961c32cb748b2e599e879c645d, type: 3}
+  m_Script: {fileID: 11500000, guid: 16f79283f463e844ea9a7c2a0141736c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
 --- !u!114 &8785664184182128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575fd9a0e820b73498fb57ea9314a905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mindmapNode: {fileID: 3271761979630193719}
-
+  mindmapNode: {fileID: 2499081267585534155}
 --- !u!1 &5632330216482769001
 GameObject:
   m_ObjectHideFlags: 0
