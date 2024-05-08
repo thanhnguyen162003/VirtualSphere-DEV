@@ -101,7 +101,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -256,6 +256,8 @@ GameObject:
   - component: {fileID: 7506922837004953065}
   - component: {fileID: 7567000206048084635}
   - component: {fileID: 3271761979630193719}
+  - component: {fileID: 8785664184182128178}
+
   m_Layer: 6
   m_Name: ObjectSpherePrefab
   m_TagString: Untagged
@@ -440,6 +442,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56491a961c32cb748b2e599e879c645d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
+--- !u!114 &8785664184182128178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030781686354497060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575fd9a0e820b73498fb57ea9314a905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mindmapNode: {fileID: 3271761979630193719}
+
 --- !u!1 &5632330216482769001
 GameObject:
   m_ObjectHideFlags: 0
