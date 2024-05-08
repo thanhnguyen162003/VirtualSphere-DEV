@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 7567000206048084635}
   - component: {fileID: 3271761979630193719}
   - component: {fileID: 8785664184182128178}
+
   m_Layer: 6
   m_Name: ObjectSpherePrefab
   m_TagString: Untagged
@@ -441,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56491a961c32cb748b2e599e879c645d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
 --- !u!114 &8785664184182128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mindmapNode: {fileID: 3271761979630193719}
+
 --- !u!1 &5632330216482769001
 GameObject:
   m_ObjectHideFlags: 0

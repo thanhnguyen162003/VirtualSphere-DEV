@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class MindmapNodeVisual : MonoBehaviour
 {
+
     /// <summary>
     /// The mindmap node prefab (the OUTER MOST PARENT OBJECT)
     /// </summary>
@@ -69,4 +71,5 @@ public class MindmapNodeVisual : MonoBehaviour
         }
     }
     #endregion
+
 }
