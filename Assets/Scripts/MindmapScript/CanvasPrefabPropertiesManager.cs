@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CanvasPrefabPropertiesManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject canvasPrefabSettings;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }

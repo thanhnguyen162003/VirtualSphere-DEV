@@ -56,7 +56,12 @@ public class MindmapLogicManager : MonoBehaviour
     /// <summary>
     /// Get the canvas properties for prefabs
     /// </summary>
-    [SerializeField] private AudioSource canvasPropertiesAudio;
+    [SerializeField] private AudioSource audioSourceGameObject;
+
+    /// <summary>
+    /// GetGameObjectSpawner
+    /// </summary>
+    [SerializeField] private GameObject spawnerObject;
 
 
     /// <summary>
@@ -71,6 +76,8 @@ public class MindmapLogicManager : MonoBehaviour
 
 
     private bool isCanvasPropertiesOpen =  false;
+    private GameObject newCanvas;
+    public float distanceInFront = 0.1f;
 
     #endregion
 
@@ -80,25 +87,34 @@ public class MindmapLogicManager : MonoBehaviour
     }
     private void Update()
     {
-
+        
         //Only 1 controller hover at a time
         if (this.selectedNodeLeft == null)
         {
+            //enable spawner left
+            if (isCanvasPropertiesOpen == false)
+            {
+                spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = true;
+            }
             grabMovementObject.SetActive(true);
             HandleSelectedNodeForRightController();
+
         }else if(this.selectedNodeLeft != null)
         {
+            //disable spawner right
+            spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = false;
 
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == false)
             {
-                canvasProperties.SetActive(true);
-                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
+                newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
+                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
                 audioSource.Play();
                 isCanvasPropertiesOpen = true;
             }else if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == true)
             {
-                canvasProperties.SetActive(false);
-                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                Destroy(newCanvas);
+                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
                 audioSource.Play();
                 isCanvasPropertiesOpen = false;
 
@@ -108,23 +124,32 @@ public class MindmapLogicManager : MonoBehaviour
         }
         if (this.selectedNodeRight == null)
         {
+            //enable spawner right
+            if (isCanvasPropertiesOpen == false)
+            {
+              spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = true;
+            }
             grabMovementObject.SetActive(true);
-
             HandleSelectedNodeForLeftController();
+
         }else if(this.selectedNodeRight != null)
         {
+            //disable spawner right
+            spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = false;
+
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == false)
             {
-                canvasProperties.SetActive(true);
-                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
+                newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
+                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
                 audioSource.Play();
                 isCanvasPropertiesOpen = true;
 
             }else if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == true)
             {
-                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                Destroy(newCanvas);
+                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
                 audioSource.Play();
-                canvasProperties.SetActive(false);
                 isCanvasPropertiesOpen = false;
 
             }
