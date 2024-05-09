@@ -44,14 +44,34 @@ public class MindmapLogicManager : MonoBehaviour
     [SerializeField] private GameObject leftController;
 
     /// <summary>
+    /// Get the grab movement to make logic
+    /// </summary>
+    [SerializeField] private GameObject grabMovementObject;
+
+    /// <summary>
+    /// Get the canvas properties for prefabs
+    /// </summary>
+    [SerializeField] private GameObject canvasProperties;
+
+    /// <summary>
+    /// Get the canvas properties for prefabs
+    /// </summary>
+    [SerializeField] private AudioSource canvasPropertiesAudio;
+
+
+    /// <summary>
     /// The selected/hovered mindmap node for the right controller
     /// </summary>
     private MindmapNode selectedNodeRight;
 
     /// <summary>
     /// The selected/hovered mindmap node for the left controller
-    /// </summary>
+    /// </summary>  
     private MindmapNode selectedNodeLeft;
+
+
+    private bool isCanvasPropertiesOpen =  false;
+
     #endregion
 
     private void Awake()
@@ -60,15 +80,57 @@ public class MindmapLogicManager : MonoBehaviour
     }
     private void Update()
     {
+
         //Only 1 controller hover at a time
         if (this.selectedNodeLeft == null)
         {
+            grabMovementObject.SetActive(true);
             HandleSelectedNodeForRightController();
+        }else if(this.selectedNodeLeft != null)
+        {
+
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == false)
+            {
+                canvasProperties.SetActive(true);
+                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                audioSource.Play();
+                isCanvasPropertiesOpen = true;
+            }else if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == true)
+            {
+                canvasProperties.SetActive(false);
+                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                audioSource.Play();
+                isCanvasPropertiesOpen = false;
+
+            }
+            grabMovementObject.SetActive(false);
+
         }
         if (this.selectedNodeRight == null)
         {
+            grabMovementObject.SetActive(true);
+
             HandleSelectedNodeForLeftController();
-        }            
+        }else if(this.selectedNodeRight != null)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == false)
+            {
+                canvasProperties.SetActive(true);
+                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                audioSource.Play();
+                isCanvasPropertiesOpen = true;
+
+            }else if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == true)
+            {
+                AudioSource audioSource = canvasPropertiesAudio.GetComponent<AudioSource>();
+                audioSource.Play();
+                canvasProperties.SetActive(false);
+                isCanvasPropertiesOpen = false;
+
+            }
+            grabMovementObject.SetActive(false);
+
+        }
     }
 
     #region Methods
@@ -131,7 +193,7 @@ public class MindmapLogicManager : MonoBehaviour
                     //CASE 3.1: Successfully detect a mindmap node
                     if (node != this.selectedNodeLeft)
                     {
-                        SetSelectedNodeLeft(node);
+                      SetSelectedNodeLeft(node);
                     }
                 }
                 else
