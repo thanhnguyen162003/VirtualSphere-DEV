@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class CanvasPrefabPropertiesManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject canvasPrefabSettings;
-
-
-    
+    //DO NOT DELETE THIS
 }

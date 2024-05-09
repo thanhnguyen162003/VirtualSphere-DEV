@@ -8,6 +8,8 @@ public class MindmapLogicManager : MonoBehaviour
 {
     #region Events
     public event EventHandler<OnSelectedMindmapNodeChangedEventArgs> OnSelectedMindmapNodeChanged;
+
+    public event EventHandler<OnSelectedMindmapNodeChangedEventArgs> OnOpenCanvasButtonClicked;
     #endregion
 
     #region Event Arguments Type
@@ -75,7 +77,7 @@ public class MindmapLogicManager : MonoBehaviour
     private MindmapNode selectedNodeLeft;
 
 
-    private bool isCanvasPropertiesOpen =  false;
+    private bool isCanvasPropertiesOpen = false;
     private GameObject newCanvas;
     public float distanceInFront = 0.1f;
 
@@ -87,75 +89,103 @@ public class MindmapLogicManager : MonoBehaviour
     }
     private void Update()
     {
-        
         //Only 1 controller hover at a time
         if (this.selectedNodeLeft == null)
         {
-            //enable spawner left
-            if (isCanvasPropertiesOpen == false)
-            {
-                spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = true;
-            }
-            grabMovementObject.SetActive(true);
             HandleSelectedNodeForRightController();
-
-        }else if(this.selectedNodeLeft != null)
-        {
-            //disable spawner right
-            spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = false;
-
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == false)
-            {
-                Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
-                newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
-                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
-                audioSource.Play();
-                isCanvasPropertiesOpen = true;
-            }else if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == true)
-            {
-                Destroy(newCanvas);
-                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
-                audioSource.Play();
-                isCanvasPropertiesOpen = false;
-
-            }
-            grabMovementObject.SetActive(false);
-
         }
         if (this.selectedNodeRight == null)
         {
-            //enable spawner right
-            if (isCanvasPropertiesOpen == false)
-            {
-              spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = true;
-            }
-            grabMovementObject.SetActive(true);
             HandleSelectedNodeForLeftController();
-
-        }else if(this.selectedNodeRight != null)
-        {
-            //disable spawner right
-            spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = false;
-
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == false)
-            {
-                Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
-                newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
-                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
-                audioSource.Play();
-                isCanvasPropertiesOpen = true;
-
-            }else if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == true)
-            {
-                Destroy(newCanvas);
-                AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
-                audioSource.Play();
-                isCanvasPropertiesOpen = false;
-
-            }
-            grabMovementObject.SetActive(false);
-
         }
+
+        //Open canvas button
+        if (this.selectedNodeLeft == null && this.selectedNodeRight != null && OVRInput.GetDown(OVRInput.Button.One))
+        {
+            OnOpenCanvasButtonClicked?.Invoke(this, new OnSelectedMindmapNodeChangedEventArgs
+            {
+                selectedMindmapNode = this.selectedNodeRight
+            });
+        }
+        if (this.selectedNodeLeft != null && this.selectedNodeRight == null && OVRInput.GetDown(OVRInput.Button.One))
+        {
+            OnOpenCanvasButtonClicked?.Invoke(this, new OnSelectedMindmapNodeChangedEventArgs
+            {
+                selectedMindmapNode = this.selectedNodeLeft
+            });
+        }
+
+        //Old code for referencing
+        #region Commented Old Code
+        ////Only 1 controller hover at a time
+        //if (this.selectedNodeLeft == null)
+        //{
+        //    //enable spawner left
+        //    if (isCanvasPropertiesOpen == false)
+        //    {
+        //        spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = true;
+        //    }
+        //    grabMovementObject.SetActive(true);
+        //    HandleSelectedNodeForRightController();
+
+        //}else if(this.selectedNodeLeft != null)
+        //{
+        //    //disable spawner right
+        //    spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = false;
+
+        //    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == false)
+        //    {
+        //        Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
+        //        newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
+        //        AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
+        //        audioSource.Play();
+        //        isCanvasPropertiesOpen = true;
+        //    }else if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && isCanvasPropertiesOpen == true)
+        //    {
+        //        Destroy(newCanvas);
+        //        AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
+        //        audioSource.Play();
+        //        isCanvasPropertiesOpen = false;
+
+        //    }
+        //    grabMovementObject.SetActive(false);
+
+        //}
+        //if (this.selectedNodeRight == null)
+        //{
+        //    //enable spawner right
+        //    if (isCanvasPropertiesOpen == false)
+        //    {
+        //      spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = true;
+        //    }
+        //    grabMovementObject.SetActive(true);
+        //    HandleSelectedNodeForLeftController();
+
+        //}else if(this.selectedNodeRight != null)
+        //{
+        //    //disable spawner right
+        //    spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = false;
+
+        //    if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == false)
+        //    {
+        //        Vector3 spawnPosition = selectedNodeRight.transform.position + selectedNodeRight.transform.right * distanceInFront;
+        //        newCanvas = Instantiate(canvasProperties, spawnPosition, transform.rotation);
+        //        AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
+        //        audioSource.Play();
+        //        isCanvasPropertiesOpen = true;
+
+        //    }else if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && isCanvasPropertiesOpen == true)
+        //    {
+        //        Destroy(newCanvas);
+        //        AudioSource audioSource = audioSourceGameObject.GetComponent<AudioSource>();
+        //        audioSource.Play();
+        //        isCanvasPropertiesOpen = false;
+
+        //    }
+        //    grabMovementObject.SetActive(false);
+
+        //}
+        #endregion
     }
 
     #region Methods
@@ -218,7 +248,7 @@ public class MindmapLogicManager : MonoBehaviour
                     //CASE 3.1: Successfully detect a mindmap node
                     if (node != this.selectedNodeLeft)
                     {
-                      SetSelectedNodeLeft(node);
+                        SetSelectedNodeLeft(node);
                     }
                 }
                 else
