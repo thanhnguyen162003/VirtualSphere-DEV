@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mindmapNode: {fileID: 2499081267585534155}
-  canvasProperties: {fileID: 2289662897571512618, guid: d8b25e1e92b5a4263819ecb99179dbc5, type: 3}
 --- !u!1 &5632330216482769001
 GameObject:
   m_ObjectHideFlags: 0
