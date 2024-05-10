@@ -197,6 +197,7 @@ public class MindmapLogicManager : MonoBehaviour
     {
         if (rightController != null)
         {
+            // Get all objects that the right controller is hovering over
             Collider[] hitObjectsArray = Physics.OverlapSphere(rightController.transform.position, maxDistance, selectableLayerMask);
             //CASE 1.1: Right controller is not null
             if (hitObjectsArray.Length > 0)
@@ -243,6 +244,8 @@ public class MindmapLogicManager : MonoBehaviour
             {
                 //CASE 2.1: Left controller cast hit something
                 Transform closestObjectHit = GetClosestObject(hitObjectsArray, leftController);
+
+                //CASE 3: Check if the closest object hit is a mindmap node
                 if (closestObjectHit.TryGetComponent(out MindmapNode node))
                 {
                     //CASE 3.1: Successfully detect a mindmap node
@@ -323,16 +326,25 @@ public class MindmapLogicManager : MonoBehaviour
     /// <returns>The closest object</returns>
     public Transform GetClosestObject(Collider[] objects, GameObject origin)
     {
+        // Get the closest object to the origin
         Transform bestTarget = null;
+        // Set the closest distance to infinity
         float closestDistanceSqr = Mathf.Infinity;
+        // Get the current position of the origin
         Vector3 currentPosition = origin.transform.position;
+        // Loop through all the objects
         foreach (Collider potentialTarget in objects)
         {
+            // Get the direction to the target
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            // Get the squared distance to the target
             float dSqrToTarget = directionToTarget.sqrMagnitude;
+            // If the distance is less than the closest distance
             if (dSqrToTarget < closestDistanceSqr)
             {
+                // Set the closest distance to the distance to the target
                 closestDistanceSqr = dSqrToTarget;
+                // Set the best target to the potential target
                 bestTarget = potentialTarget.transform;
             }
         }
