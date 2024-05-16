@@ -26,6 +26,10 @@ public class TriggerShapeSpawnerRight : MonoBehaviour
 
             Vector3 spawnPosition = RHand.transform.position + RHand.transform.forward * distanceInFront;
             newShape = Instantiate(shapePrefab, spawnPosition, RHand.transform.rotation);
+            if (newShape.TryGetComponent(out MindmapNode node))
+            {
+                node.AutoSetMindmapNodeGUID();
+            }
             AudioSource audioSource = newShape.GetComponent<AudioSource>();
             audioSource.Play();
             // Start coroutine to animate scale

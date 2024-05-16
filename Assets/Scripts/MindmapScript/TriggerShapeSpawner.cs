@@ -18,14 +18,18 @@ public class TriggerShapeSpawner : MonoBehaviour
     void Update()
     {
 
-            if (OVRInput.GetDown(triggerButton))
-            {
-                triggerStartTime = Time.time;
-                isTriggerPressed = true;
+        if (OVRInput.GetDown(triggerButton))
+        {
+            triggerStartTime = Time.time;
+            isTriggerPressed = true;
             // Calculate position in front of the controller
 
             Vector3 spawnPosition = LHand.transform.position + LHand.transform.forward * distanceInFront;
-             newShape = Instantiate(shapePrefab, spawnPosition, LHand.transform.rotation);
+            newShape = Instantiate(shapePrefab, spawnPosition, LHand.transform.rotation);
+            if (newShape.TryGetComponent(out MindmapNode node))
+            {
+                node.AutoSetMindmapNodeGUID();
+            }
             AudioSource audioSource = newShape.GetComponent<AudioSource>();
             audioSource.Play();
             // Start coroutine to animate scale
@@ -39,7 +43,7 @@ public class TriggerShapeSpawner : MonoBehaviour
             // Check if held long enough
             if (Time.time - triggerStartTime < holdDuration)
             {
-               if(newShape != null)
+                if (newShape != null)
                 {
                     newShape.SetActive(false);
                 }
