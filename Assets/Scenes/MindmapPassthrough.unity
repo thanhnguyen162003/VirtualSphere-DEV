@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802516, g: 0.22567071, b: 0.30687967, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -990,7 +990,7 @@ MonoBehaviour:
   grabMovementObject: {fileID: 1242899530}
   canvasProperties: {fileID: 2289662897571512618, guid: d8b25e1e92b5a4263819ecb99179dbc5, type: 3}
   audioSourceGameObject: {fileID: 293474285}
-  spawnerObject: {fileID: 683652167}
+  spawnerObject: {fileID: 515021666}
   distanceInFront: 0.1
 --- !u!82 &293474285
 AudioSource:
@@ -1693,6 +1693,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515021667}
+  - component: {fileID: 515021669}
+  - component: {fileID: 515021668}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1715,6 +1717,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &515021668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515021666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3abff57eaeda43b4922b7377c4b0dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapePrefab: {fileID: 3030781686354497060, guid: c769082267d554bff9901509de664d2d, type: 3}
+  triggerButton: 2097152
+  distanceInFront: 0.1
+  RHand: {fileID: 1679097370}
+  scaleUpTime: 0.17
+--- !u!114 &515021669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515021666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324e8d6ae0f954a9cafcb82a38b9687e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapePrefab: {fileID: 3030781686354497060, guid: c769082267d554bff9901509de664d2d, type: 3}
+  triggerButton: 8192
+  distanceInFront: 0.1
+  LHand: {fileID: 1679097377}
+  scaleUpTime: 0.17
 --- !u!1 &516506022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,8 +2527,6 @@ GameObject:
   m_Component:
   - component: {fileID: 683652170}
   - component: {fileID: 683652169}
-  - component: {fileID: 683652172}
-  - component: {fileID: 683652171}
   m_Layer: 0
   m_Name: UserRig
   m_TagString: Untagged
@@ -2530,40 +2564,6 @@ Transform:
   - {fileID: 1679097376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &683652171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683652167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3abff57eaeda43b4922b7377c4b0dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shapePrefab: {fileID: 3030781686354497060, guid: c769082267d554bff9901509de664d2d, type: 3}
-  triggerButton: 2097152
-  distanceInFront: 0.1
-  RHand: {fileID: 1679097370}
-  scaleUpTime: 0.17
---- !u!114 &683652172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683652167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324e8d6ae0f954a9cafcb82a38b9687e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shapePrefab: {fileID: 3030781686354497060, guid: c769082267d554bff9901509de664d2d, type: 3}
-  triggerButton: 8192
-  distanceInFront: 0.1
-  LHand: {fileID: 1679097377}
-  scaleUpTime: 0.17
 --- !u!1 &700562908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,7 +3596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1242899531
 MonoBehaviour:
   m_ObjectHideFlags: 0

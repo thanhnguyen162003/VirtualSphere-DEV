@@ -79,10 +79,6 @@ public class MindmapLogicManager : MonoBehaviour
     /// The selected/hovered mindmap node for the left controller
     /// </summary>  
     private MindmapNode selectedNodeLeft;
-
-
-    private bool isCanvasPropertiesOpen = false;
-    private GameObject newCanvas;
     public float distanceInFront = 0.1f;
 
     #endregion
@@ -95,20 +91,33 @@ public class MindmapLogicManager : MonoBehaviour
     {
         HandleSelectedNodeForRightController();
         HandleSelectedNodeForLeftController();
-        if (this.selectedNodeLeft != null && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+        if (this.selectedNodeLeft != null)
         {
-            OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
+            grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = false;
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                mindmapNode = this.selectedNodeLeft
-            });
+                OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
+                {
+                    mindmapNode = this.selectedNodeLeft
+                });
+            }
+            
         }
-        if (this.selectedNodeRight != null && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = true;
+        if (this.selectedNodeRight != null)
         {
-            OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
+            grabMovementObject.GetComponent<GrabMoveMindmap>().enabled = false;
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
-                mindmapNode = this.selectedNodeRight
-            });
+                grabMovementObject.SetActive(false);
+                OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
+                {
+                    mindmapNode = this.selectedNodeRight
+                });
+            }
+            
         }
+        grabMovementObject.GetComponent<GrabMoveMindmap>().enabled = true;
     }
 
     //Old code for referencing
