@@ -9,7 +9,7 @@ public class TriggerShapeSpawnerRight : MonoBehaviour
     private float holdDuration = 0.3f;
     public float distanceInFront = 0.1f; // Distance in meters
     public GameObject RHand;
-    public float scaleUpTime = 0.17f;
+    public float scaleUpTime = 0.2f;
 
     private float triggerStartTime;
     private bool isTriggerPressed = false;
@@ -17,14 +17,13 @@ public class TriggerShapeSpawnerRight : MonoBehaviour
 
     void Update()
     {
-
+        Vector3 spawnPosition = RHand.transform.position + RHand.transform.forward * distanceInFront;
         if (OVRInput.GetDown(triggerButton))
         {
             triggerStartTime = Time.time;
             isTriggerPressed = true;
             // Calculate position in front of the controller
 
-            Vector3 spawnPosition = RHand.transform.position + RHand.transform.forward * distanceInFront;
             newShape = Instantiate(shapePrefab, spawnPosition, RHand.transform.rotation);
             if (newShape.TryGetComponent(out MindmapNode node))
             {
