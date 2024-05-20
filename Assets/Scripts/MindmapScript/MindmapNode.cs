@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MindmapNode : MonoBehaviour
@@ -38,5 +39,23 @@ public class MindmapNode : MonoBehaviour
     public void AutoSetMindmapNodeGUID()
     {
         this.gUID = Guid.NewGuid().ToString();
+    }
+
+    public bool IsLinked { get; private set; }
+    private Rope connectedRope;
+
+    public void SetLinked(bool linked, Rope rope = null)
+    {
+        IsLinked = linked;
+        connectedRope = rope;
+    }
+    public void DisconnectRope()
+    {
+        if (connectedRope != null)
+        {
+            Destroy(connectedRope.gameObject);
+            connectedRope = null;
+            IsLinked = false;
+        }
     }
 }

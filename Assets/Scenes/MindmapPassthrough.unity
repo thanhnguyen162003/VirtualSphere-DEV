@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802516, g: 0.22567071, b: 0.30687967, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3590,6 +3590,7 @@ GameObject:
   - component: {fileID: 1242899533}
   - component: {fileID: 1242899532}
   - component: {fileID: 1242899531}
+  - component: {fileID: 1242899534}
   m_Layer: 0
   m_Name: GrabMove
   m_TagString: Untagged
@@ -3648,6 +3649,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242899534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242899530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21264dac85bf5ea45b57abaa3764f488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ropePrefab: {fileID: 4471151527542522783, guid: 3c7c2d51defd42e46a8ad68b83c0501b, type: 3}
+  nodePrefab1: {fileID: 0}
+  R_Hand: {fileID: 1679097377}
 --- !u!1001 &1277670088
 PrefabInstance:
   m_ObjectHideFlags: 0

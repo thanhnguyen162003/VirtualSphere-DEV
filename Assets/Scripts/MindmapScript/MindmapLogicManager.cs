@@ -93,20 +93,24 @@ public class MindmapLogicManager : MonoBehaviour
         HandleSelectedNodeForLeftController();
         if (this.selectedNodeLeft != null)
         {
+            grabMovementObject.GetComponent<RopeLink>().nodePrefab1 = this.selectedNodeLeft.gameObject;
             grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = false;
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
-            {
-                OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
-                {
-                    mindmapNode = this.selectedNodeLeft
-                });
-            }
-            
+            //if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            //{
+            //    OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
+            //    {
+            //        mindmapNode = this.selectedNodeLeft
+            //    });
+            //}
+
         }
+        else grabMovementObject.GetComponent<RopeLink>().nodePrefab1 = null;
+
         grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = true;
         if (this.selectedNodeRight != null)
         {
             grabMovementObject.GetComponent<GrabMoveMindmap>().enabled = false;
+            
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
                 grabMovementObject.SetActive(false);

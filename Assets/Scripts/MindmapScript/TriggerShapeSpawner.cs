@@ -45,7 +45,7 @@ public class TriggerShapeSpawner : MonoBehaviour
             {
                 if (newShape != null)
                 {
-                    newShape.SetActive(false);
+                    Destroy(newShape);
                 }
             }
         }

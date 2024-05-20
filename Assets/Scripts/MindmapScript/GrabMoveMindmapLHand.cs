@@ -14,6 +14,7 @@ public class GrabMoveMindmapLHand : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
         {
+            Debug.Log("Grab");
             currenthandpos = L_Hand.transform.position;
             // Get the difference between the previous frame's hand position and this frame's current hand position
             difference = difference = (oldhandpos - currenthandpos) * 1f;
