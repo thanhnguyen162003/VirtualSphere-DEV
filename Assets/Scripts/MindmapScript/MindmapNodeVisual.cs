@@ -7,7 +7,7 @@ using UnityEngine;
 public class MindmapNodeVisual : MonoBehaviour
 {
     #region Properties
-    private float distanceInFront = 0.1f;
+    private float distanceInFront = 0.2f;
     /// <summary>
     /// The mindmap node prefab (the OUTER MOST PARENT OBJECT)
     /// </summary>
@@ -89,6 +89,7 @@ public class MindmapNodeVisual : MonoBehaviour
         if (currentCanvas != null)
         {
             Destroy(currentCanvas.gameObject);
+            MindmapLogicManager.Instance.CloseCanvas();
         }
 
     }

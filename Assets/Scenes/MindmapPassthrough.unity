@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802516, g: 0.22567071, b: 0.30687967, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -985,8 +985,8 @@ MonoBehaviour:
   selectableLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  rightController: {fileID: 990407815}
-  leftController: {fileID: 990407814}
+  rightController: {fileID: 1679097370}
+  leftController: {fileID: 1679097377}
   grabMovementObject: {fileID: 1242899530}
   canvasProperties: {fileID: 2289662897571512618, guid: d8b25e1e92b5a4263819ecb99179dbc5, type: 3}
   audioSourceGameObject: {fileID: 293474285}
@@ -3094,16 +3094,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &990407814 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
-  m_PrefabInstance: {fileID: 1679097368}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &990407815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
-  m_PrefabInstance: {fileID: 1679097368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1027030370
 GameObject:
   m_ObjectHideFlags: 0

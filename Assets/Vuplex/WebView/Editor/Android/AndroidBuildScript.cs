@@ -49,7 +49,7 @@ namespace Vuplex.WebView.Editor {
             //_validateGraphicsApi();
             EditorUtils.ForceAndroidInternetPermission();
             EditorUtils.AssertThatOculusLowOverheadModeIsDisabled();
-            EditorUtils.AssertThatSrpBatcherIsDisabled();
+            //EditorUtils.AssertThatSrpBatcherIsDisabled();
             #if !UNITY_2018_2_OR_NEWER
                 // IPostGenerateGradleAndroidProject is only supported in Unity 2018.2 and newer.
                 WebViewLogger.LogWarning("The version of Unity in use is older than 2018.2, so AndroidBuildScript.cs will be unable to automatically modify the app's AndroidManifest.xml to apply recommended settings.");

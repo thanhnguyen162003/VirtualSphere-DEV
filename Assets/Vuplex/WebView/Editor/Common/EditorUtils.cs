@@ -46,14 +46,14 @@ namespace Vuplex.WebView.Editor {
             }
         }
 
-        public static void AssertThatSrpBatcherIsDisabled() {
+        //public static void AssertThatSrpBatcherIsDisabled() {
 
-            #if UNITY_2018_2_OR_NEWER && !VUPLEX_DISABLE_SRP_WARNING
-                if (UnityEngine.Rendering.GraphicsSettings.useScriptableRenderPipelineBatching) {
-                    throw new BuildFailedException("URP settings error: \"SRP Batcher\" is enabled in Universal Render Pipeline (URP) settings, but URP for Android has an issue that prevents 3D WebView's textures from showing up outside of a Canvas. If the project uses a WebViewPrefab, please go to \"UniversalRenderPipelineAsset\" -> \"Advanced\" and disable SRP Batcher. If the project only uses CanvasWebViewPrefab and not WebViewPrefab, you can instead add the scripting symbol VUPLEX_DISABLE_SRP_WARNING to the project to ignore this warning.");
-                }
-            #endif
-        }
+        //    #if UNITY_2018_2_OR_NEWER && !VUPLEX_DISABLE_SRP_WARNING
+        //        if (UnityEngine.Rendering.GraphicsSettings.useScriptableRenderPipelineBatching) {
+        //            throw new BuildFailedException("URP settings error: \"SRP Batcher\" is enabled in Universal Render Pipeline (URP) settings, but URP for Android has an issue that prevents 3D WebView's textures from showing up outside of a Canvas. If the project uses a WebViewPrefab, please go to \"UniversalRenderPipelineAsset\" -> \"Advanced\" and disable SRP Batcher. If the project only uses CanvasWebViewPrefab and not WebViewPrefab, you can instead add the scripting symbol VUPLEX_DISABLE_SRP_WARNING to the project to ignore this warning.");
+        //        }
+        //    #endif
+        //}
 
         public static void CopyAndReplaceDirectory(string srcPath, string dstPath, bool ignoreMetaFiles = true) {
 
