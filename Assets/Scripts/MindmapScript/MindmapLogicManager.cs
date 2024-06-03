@@ -1,7 +1,4 @@
-using Oculus.Interaction;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MindmapLogicManager : MonoBehaviour
@@ -79,6 +76,8 @@ public class MindmapLogicManager : MonoBehaviour
     /// The selected/hovered mindmap node for the left controller
     /// </summary>  
     private MindmapNode selectedNodeLeft;
+
+
     public float distanceInFront = 0.1f;
 
     #endregion
@@ -91,7 +90,7 @@ public class MindmapLogicManager : MonoBehaviour
     {
         HandleSelectedNodeForRightController();
         HandleSelectedNodeForLeftController();
-       
+
         ManageLeftHandInteraction();
         ManageRightHandInteraction();
     }
@@ -100,6 +99,7 @@ public class MindmapLogicManager : MonoBehaviour
         if (this.selectedNodeLeft != null)
         {
             grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = false;
+            spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = false;
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
@@ -111,6 +111,7 @@ public class MindmapLogicManager : MonoBehaviour
         else
         {
             grabMovementObject.GetComponent<GrabMoveMindmapLHand>().enabled = true;
+            spawnerObject.GetComponent<TriggerShapeSpawner>().enabled = true;
         }
     }
 
@@ -119,6 +120,7 @@ public class MindmapLogicManager : MonoBehaviour
         if (this.selectedNodeRight != null)
         {
             grabMovementObject.GetComponent<GrabMoveMindmap>().enabled = false;
+            spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = false;
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
                 OnOpenCanvasButtonClicked?.Invoke(this, new OnOpenCanvasButtonClickedEventArgs
@@ -130,6 +132,7 @@ public class MindmapLogicManager : MonoBehaviour
         else
         {
             grabMovementObject.GetComponent<GrabMoveMindmap>().enabled = true;
+            spawnerObject.GetComponent<TriggerShapeSpawnerRight>().enabled = true;
         }
     }
 
@@ -154,7 +157,19 @@ public class MindmapLogicManager : MonoBehaviour
                     //CASE 3.1: Successfully detect a mindmap node
                     if (node != this.selectedNodeRight)
                     {
-                        SetSelectedNodeRight(node);
+                        bool isGrabbing = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+                        if (isGrabbing && this.selectedNodeRight != null)
+                        {
+                            OnSelectedMindmapNodeChanged?.Invoke(this, new OnSelectedMindmapNodeChangedEventArgs
+                            {
+                                selectedMindmapNodeRight = this.selectedNodeRight,
+                                selectedMindmapNodeLeft = this.selectedNodeLeft,
+                            });
+                        }
+                        else
+                        {
+                            SetSelectedNodeRight(node);
+                        }
                     }
                 }
                 else
@@ -194,7 +209,19 @@ public class MindmapLogicManager : MonoBehaviour
                     //CASE 3.1: Successfully detect a mindmap node
                     if (node != this.selectedNodeLeft)
                     {
-                        SetSelectedNodeLeft(node);
+                        bool isGrabbing = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
+                        if (isGrabbing && this.selectedNodeLeft != null)
+                        {
+                            OnSelectedMindmapNodeChanged?.Invoke(this, new OnSelectedMindmapNodeChangedEventArgs
+                            {
+                                selectedMindmapNodeRight = this.selectedNodeRight,
+                                selectedMindmapNodeLeft = this.selectedNodeLeft,
+                            });
+                        }
+                        else
+                        {
+                            SetSelectedNodeLeft(node);
+                        }
                     }
                 }
                 else
