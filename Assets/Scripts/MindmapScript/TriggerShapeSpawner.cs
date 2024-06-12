@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerShapeSpawner : MonoBehaviour
@@ -24,16 +23,17 @@ public class TriggerShapeSpawner : MonoBehaviour
             isTriggerPressed = true;
             // Calculate position in front of the controller
 
-            
+
             newShape = Instantiate(shapePrefab, spawnPosition, LHand.transform.rotation);
             if (newShape.TryGetComponent(out MindmapNode node))
             {
                 node.AutoSetMindmapNodeGUID();
             }
             AudioSource audioSource = newShape.GetComponent<AudioSource>();
-            audioSource.Play();
+            if (audioSource != null) { audioSource.Play(); }
+
             // Start coroutine to animate scale
-            StartCoroutine(ScaleUp(newShape, scaleUpTime));
+            //StartCoroutine(ScaleUp(newShape, scaleUpTime));
         }
         //Debug.Log(holdDuration);
         if (OVRInput.GetUp(triggerButton))

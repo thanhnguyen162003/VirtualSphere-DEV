@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerShapeSpawnerRight : MonoBehaviour
@@ -30,9 +29,9 @@ public class TriggerShapeSpawnerRight : MonoBehaviour
                 node.AutoSetMindmapNodeGUID();
             }
             AudioSource audioSource = newShape.GetComponent<AudioSource>();
-            audioSource.Play();
+            if (audioSource != null) { audioSource.Play(); }
             // Start coroutine to animate scale
-            StartCoroutine(ScaleUp(newShape, scaleUpTime));
+            //StartCoroutine(ScaleUp(newShape, scaleUpTime));
         }
         //Debug.Log(holdDuration);
         if (OVRInput.GetUp(triggerButton))
